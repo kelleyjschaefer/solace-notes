@@ -3,6 +3,10 @@ import { ConfigModule } from '@nestjs/config';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { UsersModule } from './users/users.module';
+import { AuthModule } from './auth/auth.module';
+import { NotesModule } from './notes/notes.module';
+import { DashboardModule } from './dashboard/dashboard.module';
 @Module({
   imports: [
     ConfigModule.forRoot(),
@@ -18,6 +22,10 @@ import { TypeOrmModule } from '@nestjs/typeorm';
         synchronize: false,
       }),
     }),
+    UsersModule,
+    AuthModule,
+    NotesModule,
+    DashboardModule,
   ],
   controllers: [AppController],
   providers: [AppService],
