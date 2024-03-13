@@ -1,13 +1,11 @@
-import { Injectable } from '@nestjs/common';
+import { BadRequestException, Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { User } from './user.entity/user.entity';
 
 @Injectable()
 export class UsersService {
-  constructor(
-    @InjectRepository(User) private usersRepository: Repository<User>,
-  ) {}
+  constructor(@InjectRepository(User) private usersRepository: Repository<User>) {}
 
   async getAllUsers(): Promise<User[]> {
     return await this.usersRepository.find();
@@ -22,7 +20,11 @@ export class UsersService {
   }
 
   async createUser(user: User) {
-    this.usersRepository.create(user);
+    try {
+      return await this.usersRepository.insert(user);
+    } catch (error) {
+      throw new BadRequestException(error);
+    }
   }
 
   async deleteUser(user: User) {
