@@ -11,8 +11,8 @@ export class UsersService {
     return await this.usersRepository.find();
   }
 
-  async getUser(_id: number): Promise<User> {
-    return await this.usersRepository.findOneBy({ id: _id });
+  async getUser(_uuid: number): Promise<User> {
+    return await this.usersRepository.findOneBy({ uuid: _uuid });
   }
 
   async updateUser(user: User) {

@@ -6,6 +6,11 @@ import { NotesService } from './notes.service';
 export class NotesController {
   constructor(private service: NotesService) {}
 
+  @Get()
+  findAll() {
+    return this.service.getAllNotes();
+  }
+
   @Get(':id')
   get(@Param() params) {
     return this.service.getNote(params.id);
@@ -13,6 +18,9 @@ export class NotesController {
 
   @Post()
   create(@Body() note: Note) {
+    if (!note.owner) {
+      note.owner = 0;
+    }
     return this.service.createNote(note);
   }
 
@@ -24,5 +32,15 @@ export class NotesController {
   @Delete(':id')
   deleteNote(@Param() params) {
     return this.service.deleteNote(params.id);
+  }
+
+  @Get('search/:search')
+  findNotes(@Param() params) {
+    return this.service.findNotes(params.search);
+  }
+
+  @Get('search/user/:id')
+  findNotesByUser(@Param() params) {
+    return this.service.findNotesByUser(params.id);
   }
 }
