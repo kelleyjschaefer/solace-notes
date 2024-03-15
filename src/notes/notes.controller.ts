@@ -18,8 +18,8 @@ export class NotesController {
 
   @Post()
   create(@Body() note: Note) {
-    if (!note.owner) {
-      note.owner = 0;
+    if (!note.uuid) {
+      note.uuid = 0;
     }
     return this.service.createNote(note);
   }

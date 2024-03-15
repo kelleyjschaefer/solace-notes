@@ -1,5 +1,6 @@
 import { IsDefined, Length } from 'class-validator';
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { User } from 'src/users/user.entity/user.entity';
+import { Column, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity()
 export class Note {
@@ -7,7 +8,7 @@ export class Note {
   id: number;
 
   @Column({ default: 0 })
-  owner: number;
+  uuid: number;
 
   @Column()
   @Length(20, 200)
@@ -16,4 +17,8 @@ export class Note {
 
   @Column({ type: 'timestamp', default: () => 'NOW()' })
   posted: Date;
+
+  @ManyToOne(() => User, (user) => user.notes)
+  @JoinColumn({ name: 'uuid' })
+  owner: User;
 }

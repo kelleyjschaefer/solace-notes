@@ -9,7 +9,7 @@ export class NotesService {
   constructor(@InjectRepository(Note) private notesRepository: Repository<Note>) {}
 
   async getAllNotes(): Promise<Note[]> {
-    return await this.notesRepository.find();
+    return await this.notesRepository.createQueryBuilder("note").innerJoinAndSelect("note.owner", "users").getMany();
   }
 
   async getNote(_id: number): Promise<Note> {
@@ -22,7 +22,7 @@ export class NotesService {
   }
 
   async findNotesByUser(userId: number): Promise<[Note[], number]> {
-    return await this.notesRepository.findAndCountBy({ owner: userId });
+    return await this.notesRepository.findAndCountBy({ uuid: userId });
   }
 
   async updateNote(note: Note) {
