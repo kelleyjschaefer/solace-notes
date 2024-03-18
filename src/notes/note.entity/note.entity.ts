@@ -1,5 +1,5 @@
 import { IsDefined, Length } from 'class-validator';
-import { User } from 'src/users/user.entity/user.entity';
+import { Topic } from 'src/topics/topic.entity/topic.entity';
 import { Column, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity()
@@ -8,7 +8,7 @@ export class Note {
   id: number;
 
   @Column({ default: 0 })
-  uuid: number;
+  topicId: number;
 
   @Column()
   @Length(20, 200)
@@ -18,7 +18,7 @@ export class Note {
   @Column({ type: 'timestamp', default: () => 'NOW()' })
   posted: Date;
 
-  @ManyToOne(() => User, (user) => user.notes)
-  @JoinColumn({ name: 'uuid' })
-  owner: User;
+  @ManyToOne(() => Topic, (topic) => topic.notes, { nullable: true })
+  @JoinColumn({ name: 'topicId' })
+  topic: Topic;
 }

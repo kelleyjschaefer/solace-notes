@@ -18,9 +18,6 @@ export class NotesController {
 
   @Post()
   create(@Body() note: Note) {
-    if (!note.uuid) {
-      note.uuid = 0;
-    }
     return this.service.createNote(note);
   }
 
@@ -39,7 +36,7 @@ export class NotesController {
     return this.service.findNotes(params.search);
   }
 
-  @Get('search/user/:id')
+  @Get('search/topic/:id')
   findNotesByUser(@Param() params) {
     return this.service.findNotesByUser(params.id);
   }

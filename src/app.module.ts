@@ -3,7 +3,7 @@ import { ConfigModule } from '@nestjs/config';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { UsersModule } from './users/users.module';
+import { TopicsModule } from './topics/topics.module';
 import { AuthModule } from './auth/auth.module';
 import { NotesModule } from './notes/notes.module';
 import { DashboardModule } from './dashboard/dashboard.module';
@@ -22,7 +22,7 @@ import { DashboardModule } from './dashboard/dashboard.module';
         synchronize: true,
       }),
     }),
-    UsersModule,
+    TopicsModule,
     AuthModule,
     NotesModule,
     DashboardModule,

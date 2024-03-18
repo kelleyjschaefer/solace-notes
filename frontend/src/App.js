@@ -22,7 +22,7 @@ function App() {
             <li key={index} className="Note-card">
               <div>
                 <p> { note.content } </p>
-                <p> Posted by: { note.owner.username }</p>
+                <h2> { note.topic.topicname }</h2>
                 <p> Posted on: { note.posted }</p>
               </div>
             </li>
