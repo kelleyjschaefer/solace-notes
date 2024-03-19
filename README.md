@@ -6,7 +6,7 @@ Run the NodeJS backend framework with
 $ npm run start
 ```
 
-You can also run the ReactJS frontend on a separate port with
+You can also run the ReactJS frontend by navigating to /frontend and running
 ```bash
 $ PORT=3001 npm start
 ```
