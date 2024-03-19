@@ -1,32 +1,19 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
-</p>
-
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
-
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
-
 ## Description
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+Backend (and contains Frontend) projects for Solace Notes
+Run the NodeJS backend framework with
+```bash
+$ npm run start
+```
+
+You can also run the ReactJS frontend on a separate port with
+```bash
+$ PORT=3001 npm start
+```
 
 ## Installation
+
+To install necessary packages
 
 ```bash
 $ npm install
@@ -34,51 +21,32 @@ $ npm install
 
 ## Running the app
 
-```bash
-# development
-$ npm run start
-
-# watch mode
-$ npm run start:dev
-
-# production mode
-$ npm run start:prod
+It is necessary to have a MySQL server set up to host the database- everything is synchronized with NodeJS instead of utilizing migrations for simplicity
+In this project's main directory provide a .env file with your database's information
 ```
-
-## Test
-
-```bash
-# unit tests
-$ npm run test
-
-# e2e tests
-$ npm run test:e2e
-
-# test coverage
-$ npm run test:cov
+DB_PORT=
+DB_HOST=
+DB_user=
+DB_PASSWORD=
+DB_name=
 ```
-
-## Support
-
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
-
-## Stay in touch
-
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
-
-## License
-
-Nest is [MIT licensed](LICENSE).
-
 
 ## Devlog
 
-Notes are a simple structure containing a short (20-200) character string, a posted Date, and may optionally be associated with a User.
-If unspecified, a Note is associated with a default Anonymous user
+This Notes log is fairly straightforward;
 
-TODO:
-Authentication for Users
-Authorization for Users
-Authorization for API
+I utilized NestJS and ReactJS to make the backend and frontend, respectively.
+Some initial designs I attempted to have a sort of User signature for every note,
+but quickly realized it would put the project a bit out of scope.
+
+Instead, I scaled back with the Topics feature; 
+Every note can have a Topic, which can be used as an alternative to searching, providing a pseudo-tagging system.
+
+The two longest parts of development were actual setup of the entire project; Installation, planning, structure, etc.
+And syncing New Note creation, edit, and deletion with the active dashboard.
+
+## Stretch Goals
+If I were to return and take more time, I'd like to actually implement the Users and encapsulate the Dashboard into its own object;
+Ideally a simple login and authentication would mean multiple users could have a Dashboard, and grant permission(s) to other Users to CRUD each others Notes.
+
+I'd also like to go back and write a whole test suite as well as provide a cleaner, more elegant error handling UX.
