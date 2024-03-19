@@ -11,6 +11,16 @@ export class TopicsController {
     return this.service.getTopic(params.id);
   }
 
+  @Get('')
+  getAll() {
+    return this.service.getAllTopics();
+  }
+
+  @Get('/search/:search')
+  search(@Param() params) {
+    return this.service.searchTopics(params.search);
+  }
+
   @Post()
   create(@Body() topic: Topic) {
     return this.service.createTopic(topic);

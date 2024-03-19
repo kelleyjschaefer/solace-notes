@@ -7,7 +7,7 @@ export class Note {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column({ default: 0 })
+  @Column({ default: null })
   topicId: number;
 
   @Column()

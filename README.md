@@ -71,3 +71,14 @@ Nest is an MIT-licensed open source project. It can grow thanks to the sponsors 
 ## License
 
 Nest is [MIT licensed](LICENSE).
+
+
+## Devlog
+
+Notes are a simple structure containing a short (20-200) character string, a posted Date, and may optionally be associated with a User.
+If unspecified, a Note is associated with a default Anonymous user
+
+TODO:
+Authentication for Users
+Authorization for Users
+Authorization for API

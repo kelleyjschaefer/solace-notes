@@ -4,8 +4,7 @@ import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity()
 export class Topic {
-  @PrimaryGeneratedColumn('uuid')
-  @IsDefined()
+  @PrimaryGeneratedColumn()
   topicId: number;
 
   @Column({ unique: true })

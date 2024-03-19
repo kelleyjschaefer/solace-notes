@@ -38,6 +38,6 @@ export class NotesController {
 
   @Get('search/topic/:id')
   findNotesByUser(@Param() params) {
-    return this.service.findNotesByUser(params.id);
+    return this.service.findNotesByTopic(params.id);
   }
 }

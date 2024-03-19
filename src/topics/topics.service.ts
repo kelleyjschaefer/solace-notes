@@ -27,6 +27,10 @@ export class TopicsService {
     }
   }
 
+  async searchTopics(search: string) {
+    return await this.topicsRepository.findOneBy({ topicname: search });
+  }
+
   async deleteTopic(topic: Topic) {
     this.topicsRepository.delete(topic);
   }

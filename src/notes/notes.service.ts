@@ -9,7 +9,7 @@ export class NotesService {
   constructor(@InjectRepository(Note) private notesRepository: Repository<Note>) {}
 
   async getAllNotes(): Promise<Note[]> {
-    return await this.notesRepository.createQueryBuilder('note').innerJoinAndSelect('note.topic', 'topics').getMany();
+    return await this.notesRepository.createQueryBuilder('note').leftJoinAndSelect('note.topic', 'topics').getMany();
   }
 
   async getNote(_id: number): Promise<Note> {
@@ -21,12 +21,12 @@ export class NotesService {
     return await this.notesRepository.findBy({ content: Like(_search) });
   }
 
-  async findNotesByUser(_topicId: number): Promise<[Note[], number]> {
+  async findNotesByTopic(_topicId: number): Promise<[Note[], number]> {
     return await this.notesRepository.findAndCountBy({ topicId: _topicId });
   }
 
   async updateNote(note: Note) {
-    this.notesRepository.save(note);
+    this.notesRepository.update({ id: note.id }, { content: note.content, topicId: note.topicId });
   }
 
   async createNote(note: Note) {
